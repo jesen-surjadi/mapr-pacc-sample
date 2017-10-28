@@ -1,7 +1,16 @@
 language: java
 
+jdk:
+- openjdk8
+
 sudo: enabled
 
-./mvnw clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+before_install:
+  - chmod +x mvnw
 
-./mvnw test -B
+# git strips the wrapper jar file so we have to force its download during the build
+install:
+   - ./mvnw clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+script:
+   - ./mvnw test -B
