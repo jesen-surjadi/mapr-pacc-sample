@@ -1,0 +1,7 @@
+language: java
+
+sudo: enabled
+
+./mvnw clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+./mvnw test -B
